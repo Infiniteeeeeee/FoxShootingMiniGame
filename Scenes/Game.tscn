@@ -1,0 +1,125 @@
+[gd_scene load_steps=8 format=3 uid="uid://c0n4mcanapkp8"]
+
+[ext_resource type="Texture2D" uid="uid://craul54u64lxp" path="res://AssetBundle/Sprites/ForestBackground.png" id="1_iukft"]
+[ext_resource type="Script" uid="uid://ce5siexwpjvut" path="res://Scripts/GameManager.gd" id="1_kldst"]
+[ext_resource type="PackedScene" uid="uid://jpflq241m6l" path="res://Scenes/player.tscn" id="2_gl6un"]
+[ext_resource type="PackedScene" uid="uid://dpfjf5nayshrq" path="res://Scenes/slime.tscn" id="3_j5yw3"]
+[ext_resource type="FontFile" uid="uid://idyy7mac6ji7" path="res://AssetBundle/Uranus_Pixel_11Px.ttf" id="5_b2bpf"]
+[ext_resource type="AudioStream" uid="uid://ds7y2suggqov5" path="res://AssetBundle/Audio/BGM.ogg" id="6_7lihs"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gl6un"]
+
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("spawn_timer", "score_label", "game_over_label")]
+y_sort_enabled = true
+script = ExtResource("1_kldst")
+slime_scene = ExtResource("3_j5yw3")
+spawn_timer = NodePath("Timer")
+score_label = NodePath("CanvasLayer/Label")
+game_over_label = NodePath("CanvasLayer/GameOverLabel")
+
+[node name="Backgroud01" type="Sprite2D" parent="."]
+position = Vector2(-120, 0)
+texture = ExtResource("1_iukft")
+metadata/_edit_lock_ = true
+
+[node name="Backgroud02" type="Sprite2D" parent="."]
+position = Vector2(120, 0)
+texture = ExtResource("1_iukft")
+metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.4, 2.4)
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="." instance=ExtResource("2_gl6un")]
+position = Vector2(-226, 77)
+
+[node name="Boundary" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Boundary"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/StaticBody2D"]
+position = Vector2(0, 135)
+shape = SubResource("WorldBoundaryShape2D_gl6un")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Boundary"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/StaticBody2D2"]
+position = Vector2(-240, 52)
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_gl6un")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Boundary"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/StaticBody2D3"]
+position = Vector2(240, 52)
+rotation = -1.5707964
+shape = SubResource("WorldBoundaryShape2D_gl6un")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Boundary"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/StaticBody2D4"]
+position = Vector2(0, 30)
+rotation = -3.1415927
+shape = SubResource("WorldBoundaryShape2D_gl6un")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 17.0
+offset_top = 17.0
+offset_right = 161.0
+offset_bottom = 66.0
+theme_override_fonts/font = ExtResource("5_b2bpf")
+theme_override_font_sizes/font_size = 48
+text = "Score:0"
+
+[node name="GameOverLabel" type="Label" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -253.0
+offset_top = -60.0
+offset_right = 253.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9137449, 0, 0.033780664, 1)
+theme_override_constants/outline_size = 60
+theme_override_fonts/font = ExtResource("5_b2bpf")
+theme_override_font_sizes/font_size = 120
+text = "Game Over!"
+
+[node name="GameOverLabel2" type="Label" parent="CanvasLayer/GameOverLabel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -287.0
+offset_top = 60.0
+offset_right = 288.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9137449, 0, 0.033780664, 1)
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = ExtResource("5_b2bpf")
+theme_override_font_sizes/font_size = 48
+text = "Game By Hawtin"
+horizontal_alignment = 1
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_7lihs")
+autoplay = true
+
+[connection signal="timeout" from="Timer" to="." method="_spawn_slime"]
