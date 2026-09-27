@@ -1,4 +1,4 @@
-# FoxShootingMiniGame
+# FoxShootingMiniGame(DEMO)
 
 一个用 [Godot 4.5](https://godotengine.org/) 制作的 2D 射击小游戏。控制一只小狐狸，躲避从右侧不断刷出的史莱姆，站在安全位置自动射击它们来获取分数——被史莱姆碰到就会游戏结束。
 
