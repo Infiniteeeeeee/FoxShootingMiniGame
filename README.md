@@ -69,7 +69,8 @@
 本项目是学习练习项目，场景与素材（精灵图、音效、字体）均来自 B 站博主 **码客二十二** 的 Godot 教程：
 
 - 教程视频：[BV1fuCrYFEoG](https://www.bilibili.com/video/BV1fuCrYFEoG)
-- 主页 / 资源库：[GodotArchive](https://merxon22.github.io/GodotArchive/zh/)
+- 教程资源：[项目素材包](https://merxon22.github.io/GodotArchive/zh/posts/beginner_2d/)
+- 博主主页 / 资源库：[GodotArchive](https://merxon22.github.io/GodotArchive/zh/)
 
 感谢博主的开源分享 🙏
 
