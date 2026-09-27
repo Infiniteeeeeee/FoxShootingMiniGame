@@ -69,8 +69,6 @@
 - 教程视频：[BV1fuCrYFEoG](https://www.bilibili.com/video/BV1fuCrYFEoG)
 - 主页 / 资源库：[GodotArchive](https://merxon22.github.io/GodotArchive/zh/)
 
-其中字体 `Uranus_Pixel_11Px.ttf` 为文泉驿点阵宋体（WenQuanYi Bitmap Song），采用 [GPL v2（含字体嵌入例外）](http://wenq.org/en/)。
-
 感谢博主的开源分享 🙏
 
 ## 📝 许可证
